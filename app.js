@@ -52,6 +52,7 @@ class Calculator {
         computationResult = prevNumber * currentNumber;
         break;
       case '÷':
+        if (currentNumber == 0) {break};
         computationResult = prevNumber / currentNumber;
         break;
       default:
