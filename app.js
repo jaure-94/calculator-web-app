@@ -1,21 +1,11 @@
-class Calculator {
+class Calculate {
   constructor(previousOperationText, currentOperationText) {
     this.previousOperationText = previousOperationText;
     this.currentOperationText = currentOperationText;
-    this.clear();
+    this.clearDisplay();
   }
 
-  clear() {
-    this.currentOperation = '';
-    this.previousOperation = '';
-    this.operand = undefined;
-  }
-
-  delete() {
-    this.currentOperation = this.currentOperation.toString().slice(0, -1);
-  }
-
-  appendNumber(number) {
+  addNumberToDisplay(number) {
     if (number === '.' && this.currentOperation.includes('.')) {
       return;
     }
@@ -32,6 +22,16 @@ class Calculator {
     this.operand = operand;
     this.previousOperation = this.currentOperation;
     this.currentOperation = '';
+  }
+
+  clearDisplay() {
+    this.currentOperation = '';
+    this.previousOperation = '';
+    this.operand = undefined;
+  }
+
+  delete() {
+    this.currentOperation = this.currentOperation.toString().slice(0, -1);
   }
 
   operate() {
@@ -81,11 +81,11 @@ const allClearButton = document.querySelector(".data-all-clear");
 const previousOperationText = document.querySelector(".previous-operation");
 const currentOperationText = document.querySelector(".current-operation");
 
-const calculator = new Calculator(previousOperationText, currentOperationText);
+const calculator = new Calculate(previousOperationText, currentOperationText);
 
 numberButtons.forEach(button => {
   button.addEventListener('click', () => {
-    calculator.appendNumber(button.innerText);
+    calculator.addNumberToDisplay(button.innerText);
     calculator.updateDisplay();
   });
 });
@@ -103,7 +103,7 @@ equalsButton.addEventListener('click', button => {
 });
 
 allClearButton.addEventListener('click', button => {
-  calculator.clear();
+  calculator.clearDisplay();
   calculator.updateDisplay();
 });
 
