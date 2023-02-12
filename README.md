@@ -1,2 +1,4 @@
 # calculator-web-app
-html, css, javascript based web calculator
+
+
+visit site at https://jaure-94.github.io/calculator-web-app/
